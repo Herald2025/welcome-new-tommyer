@@ -1,0 +1,81 @@
+---
+// Modal Component
+interface Props {
+	id: string;
+	title: string;
+}
+
+const { id, title } = Astro.props;
+---
+
+<dialog id={id} class="modal-dialog backdrop:bg-black/80 bg-transparent p-0 max-w-4xl w-[90vw] m-auto">
+	<div class="relative bg-black border-2 border-cyan-500 p-6 md:p-10 max-h-[80vh] overflow-y-auto">
+		<!-- Corner decorations -->
+		<div class="absolute top-0 left-0 w-4 h-4 bg-cyan-500"></div>
+		<div class="absolute top-0 right-0 w-4 h-4 bg-cyan-500"></div>
+		<div class="absolute bottom-0 left-0 w-4 h-4 bg-cyan-500"></div>
+		<div class="absolute bottom-0 right-0 w-4 h-4 bg-cyan-500"></div>
+
+		<!-- Close button (右上角X) -->
+		<form method="dialog" class="absolute top-4 right-4 z-10">
+			<button class="w-10 h-10 flex items-center justify-center text-cyan-400 hover:text-white hover:bg-cyan-500/20 transition-all duration-300 text-3xl leading-none font-bold cursor-pointer">
+				×
+			</button>
+		</form>
+
+		<!-- Title -->
+		<h2 class="text-3xl md:text-4xl font-black text-white mb-6 tracking-tight pr-12">
+			{title}
+		</h2>
+
+		<!-- Content slot -->
+		<div class="text-gray-300">
+			<slot />
+		</div>
+
+		<!-- Close button at bottom (带动画) -->
+		<form method="dialog" class="mt-8">
+			<button class="group relative px-10 py-4 bg-cyan-500 text-black font-bold text-lg uppercase tracking-wide overflow-hidden transition-all duration-300 cursor-pointer">
+				<span class="relative z-10">关闭</span>
+				<div class="absolute inset-0 bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+			</button>
+		</form>
+	</div>
+</dialog>
+
+<style>
+	/* Dialog默认样式重置和居中 */
+	.modal-dialog {
+		border: none;
+		border-radius: 0;
+		padding: 0;
+		/* 使用原生dialog居中 */
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		margin: 0;
+	}
+
+	/* 打开时的动画 */
+	.modal-dialog[open] {
+		animation: modal-appear 0.3s ease-out;
+	}
+
+	@keyframes modal-appear {
+		from {
+			opacity: 0;
+			transform: translate(-50%, -50%) scale(0.95);
+		}
+		to {
+			opacity: 1;
+			transform: translate(-50%, -50%) scale(1);
+		}
+	}
+
+	/* Backdrop样式 */
+	.modal-dialog::backdrop {
+		backdrop-filter: blur(4px);
+		background: rgba(0, 0, 0, 0.8);
+	}
+</style>

@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import CoreDomainsSection from '../components/CoreDomainsSection.astro';
+import JoinSection from '../components/JoinSection.astro';
+---
+
+<Layout>
+	<div class="min-h-screen bg-black text-white">
+		<HeroSection />
+		<AboutSection />
+		<CoreDomainsSection />
+		<JoinSection />
+	</div>
+</Layout>
+
+<style is:global>
+	html {
+		scroll-behavior: smooth;
+	}
+</style>

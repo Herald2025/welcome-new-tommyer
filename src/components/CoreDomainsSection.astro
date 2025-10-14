@@ -1,0 +1,167 @@
+---
+// Core Domains Section Component
+import Modal from './Modal.astro';
+---
+
+<section class="py-24 px-6 bg-black">
+	<div class="max-w-6xl mx-auto">
+		<h2 class="text-5xl md:text-6xl font-black text-center mb-4 tracking-tight">
+			<span class="text-white">核心领域</span>
+		</h2>
+		<div class="text-center mb-16">
+			<span class="text-cyan-400 font-mono text-sm tracking-[0.3em]">CORE DOMAINS</span>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+			<!-- AI Agent -->
+			<button onclick="document.getElementById('modal-ai').showModal()" class="relative p-8 bg-black border-2 border-zinc-800 hover:border-cyan-500 transition-all duration-300 group cursor-pointer text-left w-full">
+				<div class="absolute top-0 left-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+				<div class="absolute top-0 right-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+				<div class="absolute bottom-0 left-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+				<div class="absolute bottom-0 right-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+				<div class="mb-4">
+					<span class="text-cyan-400 font-mono text-xs tracking-wider">[01]</span>
+				</div>
+				<h3 class="text-2xl font-black text-white mb-3 tracking-tight">AI Agent</h3>
+				<p class="text-gray-400 text-sm leading-relaxed">智能代理系统开发</p>
+			</button>
+
+			<!-- Web全栈 -->
+			<button onclick="document.getElementById('modal-web').showModal()" class="relative p-8 bg-black border-2 border-zinc-800 hover:border-cyan-500 transition-all duration-300 group cursor-pointer text-left w-full">
+				<div class="absolute top-0 left-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+				<div class="absolute top-0 right-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+				<div class="absolute bottom-0 left-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+				<div class="absolute bottom-0 right-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+				<div class="mb-4">
+					<span class="text-cyan-400 font-mono text-xs tracking-wider">[02]</span>
+				</div>
+				<h3 class="text-2xl font-black text-white mb-3 tracking-tight">Web全栈</h3>
+				<p class="text-gray-400 text-sm leading-relaxed">现代化Web应用开发</p>
+			</button>
+
+			<!-- Spring Boot -->
+			<button onclick="document.getElementById('modal-spring').showModal()" class="relative p-8 bg-black border-2 border-zinc-800 hover:border-cyan-500 transition-all duration-300 group cursor-pointer text-left w-full">
+				<div class="absolute top-0 left-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+				<div class="absolute top-0 right-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+				<div class="absolute bottom-0 left-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+				<div class="absolute bottom-0 right-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+				<div class="mb-4">
+					<span class="text-cyan-400 font-mono text-xs tracking-wider">[03]</span>
+				</div>
+				<h3 class="text-2xl font-black text-white mb-3 tracking-tight">Spring Boot</h3>
+				<p class="text-gray-400 text-sm leading-relaxed">企业级后端服务架构</p>
+			</button>
+
+			<!-- Node.js -->
+			<button onclick="document.getElementById('modal-node').showModal()" class="relative p-8 bg-black border-2 border-zinc-800 hover:border-cyan-500 transition-all duration-300 group cursor-pointer text-left w-full">
+				<div class="absolute top-0 left-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+				<div class="absolute top-0 right-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+				<div class="absolute bottom-0 left-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+				<div class="absolute bottom-0 right-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+				<div class="mb-4">
+					<span class="text-cyan-400 font-mono text-xs tracking-wider">[04]</span>
+				</div>
+				<h3 class="text-2xl font-black text-white mb-3 tracking-tight">Node.js</h3>
+				<p class="text-gray-400 text-sm leading-relaxed">高性能服务端开发</p>
+			</button>
+
+			<!-- 大前端 -->
+			<button onclick="document.getElementById('modal-frontend').showModal()" class="relative p-8 bg-black border-2 border-zinc-800 hover:border-cyan-500 transition-all duration-300 group cursor-pointer text-left w-full">
+				<div class="absolute top-0 left-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+				<div class="absolute top-0 right-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+				<div class="absolute bottom-0 left-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+				<div class="absolute bottom-0 right-0 w-2 h-2 bg-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+				<div class="mb-4">
+					<span class="text-cyan-400 font-mono text-xs tracking-wider">[05]</span>
+				</div>
+				<h3 class="text-2xl font-black text-white mb-3 tracking-tight">大前端</h3>
+				<p class="text-gray-400 text-sm leading-relaxed">跨平台用户体验设计</p>
+			</button>
+
+			<!-- More -->
+			<div class="relative p-8 bg-black border-2 border-cyan-500 transition-all duration-300">
+				<div class="absolute top-0 left-0 w-2 h-2 bg-cyan-500"></div>
+				<div class="absolute top-0 right-0 w-2 h-2 bg-cyan-500"></div>
+				<div class="absolute bottom-0 left-0 w-2 h-2 bg-cyan-500"></div>
+				<div class="absolute bottom-0 right-0 w-2 h-2 bg-cyan-500"></div>
+
+				<div class="mb-4">
+					<span class="text-cyan-400 font-mono text-xs tracking-wider">[...]</span>
+				</div>
+				<h3 class="text-2xl font-black text-cyan-400 mb-3 tracking-tight">更多可能</h3>
+				<p class="text-gray-400 text-sm leading-relaxed">持续探索前沿技术</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Modals -->
+<Modal id="modal-ai" title="AI Agent">
+	<div class="space-y-4">
+		<p class="text-lg">工作室在AI Agent领域的探索包括:</p>
+		<ul class="list-disc list-inside space-y-2 ml-4">
+			<li>智能对话系统开发</li>
+			<li>多模态AI应用</li>
+			<li>LLM应用集成</li>
+			<li>Agent工作流设计</li>
+		</ul>
+		<p class="mt-4 text-gray-400">相关项目展示敬请期待...</p>
+	</div>
+</Modal>
+
+<Modal id="modal-web" title="Web全栈开发">
+	<div class="space-y-4">
+		<p class="text-lg">工作室Web全栈开发包括:</p>
+		<ul class="list-disc list-inside space-y-2 ml-4">
+			<li>现代化前端框架 (React, Vue, Astro)</li>
+			<li>后端API开发</li>
+			<li>数据库设计与优化</li>
+			<li>全栈应用架构</li>
+		</ul>
+		<p class="mt-4 text-gray-400">相关项目展示敬请期待...</p>
+	</div>
+</Modal>
+
+<Modal id="modal-spring" title="Spring Boot">
+	<div class="space-y-4">
+		<p class="text-lg">工作室Spring Boot开发包括:</p>
+		<ul class="list-disc list-inside space-y-2 ml-4">
+			<li>微服务架构设计</li>
+			<li>RESTful API开发</li>
+			<li>Spring Cloud生态应用</li>
+			<li>企业级应用开发</li>
+		</ul>
+		<p class="mt-4 text-gray-400">相关项目展示敬请期待...</p>
+	</div>
+</Modal>
+
+<Modal id="modal-node" title="Node.js">
+	<div class="space-y-4">
+		<p class="text-lg">工作室Node.js开发包括:</p>
+		<ul class="list-disc list-inside space-y-2 ml-4">
+			<li>高性能后端服务</li>
+			<li>实时应用开发</li>
+			<li>API网关设计</li>
+			<li>服务器端渲染</li>
+		</ul>
+		<p class="mt-4 text-gray-400">相关项目展示敬请期待...</p>
+	</div>
+</Modal>
+
+<Modal id="modal-frontend" title="大前端">
+	<div class="space-y-4">
+		<p class="text-lg">工作室大前端开发包括:</p>
+		<ul class="list-disc list-inside space-y-2 ml-4">
+			<li>跨平台应用开发</li>
+			<li>移动端H5开发</li>
+			<li>小程序开发</li>
+			<li>桌面应用开发</li>
+		</ul>
+		<p class="mt-4 text-gray-400">相关项目展示敬请期待...</p>
+	</div>
+</Modal>
