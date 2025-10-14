@@ -1,6 +1,10 @@
 ---
 // Core Domains Section Component
-import Modal from './Modal.astro';
+import AIAgentModal from './CoreDomainSection/AIAgentModal.astro';
+import BackendModal from './CoreDomainSection/BackendModal.astro';
+import FrontendModal from './CoreDomainSection/FrontendModal.astro';
+import DatabaseModal from './CoreDomainSection/DatabaseModal.astro';
+import DevOpsModal from './CoreDomainSection/DevOpsModal.astro';
 ---
 
 <section class="py-24 px-6 bg-black">
@@ -101,67 +105,8 @@ import Modal from './Modal.astro';
 </section>
 
 <!-- Modals -->
-<Modal id="modal-ai" title="AI Agent">
-	<div class="space-y-4">
-		<p class="text-lg">工作室在AI Agent领域的探索包括:</p>
-		<ul class="list-disc list-inside space-y-2 ml-4">
-			<li>智能对话系统开发</li>
-			<li>多模态AI应用</li>
-			<li>LLM应用集成</li>
-			<li>Agent工作流设计</li>
-		</ul>
-		<p class="mt-4 text-gray-400">相关项目展示敬请期待...</p>
-	</div>
-</Modal>
-
-<Modal id="modal-web" title="Web全栈开发">
-	<div class="space-y-4">
-		<p class="text-lg">工作室Web全栈开发包括:</p>
-		<ul class="list-disc list-inside space-y-2 ml-4">
-			<li>现代化前端框架 (React, Vue, Astro)</li>
-			<li>后端API开发</li>
-			<li>数据库设计与优化</li>
-			<li>全栈应用架构</li>
-		</ul>
-		<p class="mt-4 text-gray-400">相关项目展示敬请期待...</p>
-	</div>
-</Modal>
-
-<Modal id="modal-spring" title="Spring Boot">
-	<div class="space-y-4">
-		<p class="text-lg">工作室Spring Boot开发包括:</p>
-		<ul class="list-disc list-inside space-y-2 ml-4">
-			<li>微服务架构设计</li>
-			<li>RESTful API开发</li>
-			<li>Spring Cloud生态应用</li>
-			<li>企业级应用开发</li>
-		</ul>
-		<p class="mt-4 text-gray-400">相关项目展示敬请期待...</p>
-	</div>
-</Modal>
-
-<Modal id="modal-node" title="Node.js">
-	<div class="space-y-4">
-		<p class="text-lg">工作室Node.js开发包括:</p>
-		<ul class="list-disc list-inside space-y-2 ml-4">
-			<li>高性能后端服务</li>
-			<li>实时应用开发</li>
-			<li>API网关设计</li>
-			<li>服务器端渲染</li>
-		</ul>
-		<p class="mt-4 text-gray-400">相关项目展示敬请期待...</p>
-	</div>
-</Modal>
-
-<Modal id="modal-frontend" title="大前端">
-	<div class="space-y-4">
-		<p class="text-lg">工作室大前端开发包括:</p>
-		<ul class="list-disc list-inside space-y-2 ml-4">
-			<li>跨平台应用开发</li>
-			<li>移动端H5开发</li>
-			<li>小程序开发</li>
-			<li>桌面应用开发</li>
-		</ul>
-		<p class="mt-4 text-gray-400">相关项目展示敬请期待...</p>
-	</div>
-</Modal>
+<AIAgentModal />
+<BackendModal />
+<FrontendModal />
+<DatabaseModal />
+<DevOpsModal />
