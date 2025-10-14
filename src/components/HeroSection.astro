@@ -2,7 +2,7 @@
 // Hero Section Component
 ---
 
-<section class="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden select-none">
+<section class="hero-section relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden select-none">
 	<!-- Background Grid -->
 	<div class="absolute inset-0 bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
@@ -50,13 +50,43 @@
 	</div>
 
 	<!-- Corner Decorations -->
-	<div class="absolute top-8 left-8 w-16 h-16 border-t-2 border-l-2 border-cyan-500"></div>
-	<div class="absolute top-8 right-8 w-16 h-16 border-t-2 border-r-2 border-cyan-500"></div>
-	<div class="absolute bottom-8 left-8 w-16 h-16 border-b-2 border-l-2 border-cyan-500"></div>
-	<div class="absolute bottom-8 right-8 w-16 h-16 border-b-2 border-r-2 border-cyan-500"></div>
+	<div class="absolute top-3 left-3 md:top-8 md:left-8 w-12 h-12 md:w-16 md:h-16 border-t-2 border-l-2 border-cyan-500"></div>
+	<div class="absolute top-3 right-3 md:top-8 md:right-8 w-12 h-12 md:w-16 md:h-16 border-t-2 border-r-2 border-cyan-500"></div>
+	<div class="absolute bottom-3 left-3 md:bottom-8 md:left-8 w-12 h-12 md:w-16 md:h-16 border-b-2 border-l-2 border-cyan-500"></div>
+	<div class="absolute bottom-3 right-3 md:bottom-8 md:right-8 w-12 h-12 md:w-16 md:h-16 border-b-2 border-r-2 border-cyan-500"></div>
 </section>
 
+<script>
+	function setViewportHeight() {
+		const height = Math.min(
+			window.visualViewport?.height || Infinity,
+			window.innerHeight,
+			document.documentElement.clientHeight
+		);
+		document.documentElement.style.setProperty('--safe-vh', `${height}px`);
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', setViewportHeight);
+	} else {
+		setViewportHeight();
+	}
+
+	setTimeout(setViewportHeight, 100);
+
+	window.addEventListener('resize', setViewportHeight);
+	window.addEventListener('orientationchange', () => setTimeout(setViewportHeight, 100));
+
+	if (window.visualViewport) {
+		window.visualViewport.addEventListener('resize', setViewportHeight);
+	}
+</script>
+
 <style>
+	.hero-section {
+		max-height: var(--safe-vh, 100vh);
+	}
+
 	@keyframes scan {
 		0% {
 			transform: translateY(-100vh);
