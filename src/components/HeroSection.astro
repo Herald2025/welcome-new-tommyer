@@ -8,7 +8,7 @@
 
 	<!-- Animated Scan Lines -->
 	<div class="absolute inset-0 overflow-hidden pointer-events-none">
-		<div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent animate-scan opacity-50"></div>
+		<div id="scan-line" class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent animate-scan opacity-50"></div>
 	</div>
 
 	<!-- Content -->
@@ -20,7 +20,7 @@
 		</div>
 
 		<h1 class="text-6xl md:text-8xl font-black mb-8 animate-fade-in-up tracking-tighter leading-none">
-			<span class="text-white block font-medium font-serif">信使计划</span>
+			<span id="hero-title-primary" class="text-white block font-medium font-serif">信使计划</span>
 			<span class="text-white block text-4xl md:text-5xl tracking-wide mt-2 font-extralight font-serif">工作室</span>
 			<span class="text-cyan-400 block mt-4 font-extralight tracking-wide font-serif">Herald Studio</span>
 		</h1>
@@ -99,6 +99,47 @@
 			}
 		});
 	});
+
+	(function () {
+		const scanEl = document.querySelector('#scan-line');
+		const titleEl = document.querySelector('#hero-title-primary');
+		if (!scanEl || !titleEl) return;
+
+		const originalText = '信使计划';
+		const altText = '小猴偷米';
+		let lastOverlap = false;
+		let swapping = false;
+
+		function smoothSwap(el: Element, next: string) {
+			if (swapping) return;
+			swapping = true;
+			(el as HTMLElement).style.opacity = '0';
+			setTimeout(() => {
+				(el as HTMLElement).textContent = next;
+				(el as HTMLElement).style.opacity = '1';
+				setTimeout(() => {
+					swapping = false;
+				}, 300);
+			}, 180);
+		}
+
+		function tick() {
+			const lineRect = (scanEl as HTMLElement).getBoundingClientRect();
+			const titleRect = (titleEl as HTMLElement).getBoundingClientRect();
+			const lineY = lineRect.top;
+			const overlapping = lineY >= titleRect.top && lineY <= titleRect.bottom;
+
+			if (overlapping && !lastOverlap) {
+				const next = (titleEl as HTMLElement).textContent === originalText ? altText : originalText;
+				smoothSwap(titleEl as HTMLElement, next);
+			}
+
+			lastOverlap = overlapping;
+			requestAnimationFrame(tick);
+		}
+
+		requestAnimationFrame(tick);
+	})();
 </script>
 
 <style>
@@ -243,5 +284,8 @@
 		50% {
 			opacity: 0;
 		}
+	}
+	#hero-title-primary {
+		transition: opacity 180ms ease;
 	}
 </style>
