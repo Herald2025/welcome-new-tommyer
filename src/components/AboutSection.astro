@@ -1,5 +1,5 @@
 ---
-// About Section Component
+// About Section Component - Timeline
 ---
 
 <section id="about" class="py-24 px-6 bg-zinc-950 border-t-2 border-cyan-500">
@@ -11,53 +11,129 @@
 			<span class="text-cyan-400 font-mono text-sm tracking-[0.3em]">ABOUT US</span>
 		</div>
 
-		<div class="grid md:grid-cols-3 gap-8">
-			<!-- Card 1 -->
-			<div class="group relative p-8 bg-black border-2 border-zinc-800 hover:border-cyan-500 transition-all duration-300">
-				<div class="absolute top-0 left-0 w-2 h-2 bg-cyan-500"></div>
-				<div class="absolute top-0 right-0 w-2 h-2 bg-cyan-500"></div>
-				<div class="absolute bottom-0 left-0 w-2 h-2 bg-cyan-500"></div>
-				<div class="absolute bottom-0 right-0 w-2 h-2 bg-cyan-500"></div>
+		<!-- Mobile: Vertical Timeline (< md) -->
+		<div class="md:hidden relative">
+			<!-- Vertical line -->
+			<div class="absolute left-0 top-0 bottom-0 w-0.5 bg-cyan-500"></div>
 
-				<div class="w-16 h-16 mb-6 bg-cyan-500/10 border-2 border-cyan-500 flex items-center justify-center text-3xl">
-					💻
+			<!-- Timeline items -->
+			<div class="space-y-12">
+				<!-- 2001 -->
+				<div class="relative pl-8">
+					<div class="absolute left-0 top-0 w-3 h-3 bg-cyan-500 rounded-full -translate-x-[5px]"></div>
+					<div class="bg-black border-2 border-zinc-800 p-6">
+						<div class="text-cyan-400 font-mono text-sm mb-2">2001</div>
+						<p class="text-gray-300 leading-relaxed">Herald 东南大学先声网成立</p>
+					</div>
 				</div>
-				<h3 class="text-2xl font-black text-white mb-4 tracking-tight">技术驱动</h3>
-				<p class="text-gray-400 leading-relaxed">
-					专注于前沿技术探索，涵盖Web开发、移动应用、AI、云计算等多个技术领域
-				</p>
+
+				<!-- 2014 -->
+				<div class="relative pl-8">
+					<div class="absolute left-0 top-0 w-3 h-3 bg-cyan-500 rounded-full -translate-x-[5px]"></div>
+					<div class="bg-black border-2 border-zinc-800 p-6">
+						<div class="text-cyan-400 font-mono text-sm mb-2">2014</div>
+						<p class="text-gray-300 leading-relaxed">通过微信公众号提供了信息查询的便捷通道</p>
+					</div>
+				</div>
+
+				<!-- 2016 -->
+				<div class="relative pl-8">
+					<div class="absolute left-0 top-0 w-3 h-3 bg-cyan-500 rounded-full -translate-x-[5px]"></div>
+					<div class="bg-black border-2 border-zinc-800 p-6">
+						<div class="text-cyan-400 font-mono text-sm mb-2">2016</div>
+						<p class="text-gray-300 leading-relaxed">推出小猴偷米系列产品 安卓应用、iOS应用、微信小程序、微信公众号以及PWA</p>
+					</div>
+				</div>
+
+				<!-- 2020 -->
+				<div class="relative pl-8">
+					<div class="absolute left-0 top-0 w-3 h-3 bg-cyan-500 rounded-full -translate-x-[5px]"></div>
+					<div class="bg-black border-2 border-zinc-800 p-6">
+						<div class="text-cyan-400 font-mono text-sm mb-2">2020</div>
+						<p class="text-gray-300 leading-relaxed">东南学工系统上线</p>
+					</div>
+				</div>
+
+				<!-- 2024 -->
+				<div class="relative pl-8">
+					<div class="absolute left-0 top-0 w-3 h-3 bg-cyan-500 rounded-full -translate-x-[5px]"></div>
+					<div class="bg-black border-2 border-zinc-800 p-6">
+						<div class="text-cyan-400 font-mono text-sm mb-2">2024</div>
+						<p class="text-gray-300 leading-relaxed">信息学院导师会客厅系统运维</p>
+					</div>
+				</div>
+
+				<!-- 2025+ -->
+				<div class="relative pl-8">
+					<div class="absolute left-0 top-0 w-3 h-3 bg-cyan-500 rounded-full -translate-x-[5px]"></div>
+					<div class="bg-black border-2 border-cyan-500 p-6">
+						<div class="text-cyan-400 font-mono text-sm mb-2">2025后</div>
+						<p class="text-gray-300 leading-relaxed">畅行线AI Agent平台搭建，机关党委网站版面改造，信小息AI就业小程序开发，辅楼预约系统运维...</p>
+					</div>
+				</div>
 			</div>
+		</div>
 
-			<!-- Card 2 -->
-			<div class="group relative p-8 bg-black border-2 border-zinc-800 hover:border-cyan-500 transition-all duration-300">
-				<div class="absolute top-0 left-0 w-2 h-2 bg-cyan-500"></div>
-				<div class="absolute top-0 right-0 w-2 h-2 bg-cyan-500"></div>
-				<div class="absolute bottom-0 left-0 w-2 h-2 bg-cyan-500"></div>
-				<div class="absolute bottom-0 right-0 w-2 h-2 bg-cyan-500"></div>
+		<!-- Desktop: Horizontal Timeline (≥ md) -->
+		<div class="hidden md:block relative">
+			<!-- Horizontal line -->
+			<div class="absolute left-0 right-0 top-0 h-0.5 bg-cyan-500"></div>
 
-				<div class="w-16 h-16 mb-6 bg-cyan-500/10 border-2 border-cyan-500 flex items-center justify-center text-3xl">
-					🚀
+			<!-- Timeline items -->
+			<div class="grid grid-cols-6 gap-4">
+				<!-- 2001 -->
+				<div class="relative pt-8">
+					<div class="absolute left-1/2 top-0 w-3 h-3 bg-cyan-500 rounded-full -translate-x-1/2 -translate-y-[5px]"></div>
+					<div class="bg-black border-2 border-zinc-800 p-4 h-full">
+						<div class="text-cyan-400 font-mono text-sm mb-2">2001</div>
+						<p class="text-gray-300 text-sm leading-relaxed">Herald 东南大学先声网成立</p>
+					</div>
 				</div>
-				<h3 class="text-2xl font-black text-white mb-4 tracking-tight">项目实战</h3>
-				<p class="text-gray-400 leading-relaxed">
-					参与真实项目开发，从idea到上线全流程体验，积累宝贵的实战经验
-				</p>
-			</div>
 
-			<!-- Card 3 -->
-			<div class="group relative p-8 bg-black border-2 border-zinc-800 hover:border-cyan-500 transition-all duration-300">
-				<div class="absolute top-0 left-0 w-2 h-2 bg-cyan-500"></div>
-				<div class="absolute top-0 right-0 w-2 h-2 bg-cyan-500"></div>
-				<div class="absolute bottom-0 left-0 w-2 h-2 bg-cyan-500"></div>
-				<div class="absolute bottom-0 right-0 w-2 h-2 bg-cyan-500"></div>
-
-				<div class="w-16 h-16 mb-6 bg-cyan-500/10 border-2 border-cyan-500 flex items-center justify-center text-3xl">
-					🤝
+				<!-- 2014 -->
+				<div class="relative pt-8">
+					<div class="absolute left-1/2 top-0 w-3 h-3 bg-cyan-500 rounded-full -translate-x-1/2 -translate-y-[5px]"></div>
+					<div class="bg-black border-2 border-zinc-800 p-4 h-full">
+						<div class="text-cyan-400 font-mono text-sm mb-2">2014</div>
+						<p class="text-gray-300 text-sm leading-relaxed">通过微信公众号提供了信息查询的便捷通道</p>
+					</div>
 				</div>
-				<h3 class="text-2xl font-black text-white mb-4 tracking-tight">团队协作</h3>
-				<p class="text-gray-400 leading-relaxed">
-					与志同道合的伙伴一起成长，在协作中提升技术能力和团队协作能力
-				</p>
+
+				<!-- 2016 -->
+				<div class="relative pt-8">
+					<div class="absolute left-1/2 top-0 w-3 h-3 bg-cyan-500 rounded-full -translate-x-1/2 -translate-y-[5px]"></div>
+					<div class="bg-black border-2 border-zinc-800 p-4 h-full">
+						<div class="text-cyan-400 font-mono text-sm mb-2">2016</div>
+						<p class="text-gray-300 text-sm leading-relaxed">推出小猴偷米系列产品 安卓应用、iOS应用、微信小程序、微信公众号以及PWA</p>
+					</div>
+				</div>
+
+				<!-- 2020 -->
+				<div class="relative pt-8">
+					<div class="absolute left-1/2 top-0 w-3 h-3 bg-cyan-500 rounded-full -translate-x-1/2 -translate-y-[5px]"></div>
+					<div class="bg-black border-2 border-zinc-800 p-4 h-full">
+						<div class="text-cyan-400 font-mono text-sm mb-2">2020</div>
+						<p class="text-gray-300 text-sm leading-relaxed">东南学工系统上线</p>
+					</div>
+				</div>
+
+				<!-- 2024 -->
+				<div class="relative pt-8">
+					<div class="absolute left-1/2 top-0 w-3 h-3 bg-cyan-500 rounded-full -translate-x-1/2 -translate-y-[5px]"></div>
+					<div class="bg-black border-2 border-zinc-800 p-4 h-full">
+						<div class="text-cyan-400 font-mono text-sm mb-2">2024</div>
+						<p class="text-gray-300 text-sm leading-relaxed">信息学院导师会客厅系统运维</p>
+					</div>
+				</div>
+
+				<!-- 2025+ -->
+				<div class="relative pt-8">
+					<div class="absolute left-1/2 top-0 w-3 h-3 bg-cyan-500 rounded-full -translate-x-1/2 -translate-y-[5px]"></div>
+					<div class="bg-black border-2 border-cyan-500 p-4 h-full">
+						<div class="text-cyan-400 font-mono text-sm mb-2">2025后</div>
+						<p class="text-gray-300 text-sm leading-relaxed">畅行线AI Agent平台搭建，机关党委网站版面改造，信小息AI就业小程序开发，辅楼预约系统运维...</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
