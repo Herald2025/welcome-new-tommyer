@@ -1,5 +1,7 @@
 ---
 import Modal from '../Modal.astro';
+import ModalImage from '../ModalImage.astro';
+import imgDb from '../../assets/img-db.jpeg';
 ---
 
 <Modal id="modal-node" title="高性能数据库设计">
@@ -12,5 +14,6 @@ import Modal from '../Modal.astro';
 			<li><strong>性能优化</strong> - 索引设计、查询优化</li>
 		</ul>
 		<p class="mt-4 text-gray-400">亲手设计服务全校师生的数据库结构，掌握企业级数据库技能。</p>
+		<ModalImage src={imgDb} title="数据库表结构管理" />
 	</div>
 </Modal>

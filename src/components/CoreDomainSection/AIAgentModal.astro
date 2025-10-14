@@ -1,5 +1,8 @@
 ---
 import Modal from '../Modal.astro';
+import ModalImage from '../ModalImage.astro';
+import imgAgent from '../../assets/img-agent.png';
+import imgAgent2 from '../../assets/img-agent2.png';
 ---
 
 <Modal id="modal-ai" title="AI Agent">
@@ -10,6 +13,8 @@ import Modal from '../Modal.astro';
 			<li><strong>畅行线</strong> - AI Agent 赋能企业管理</li>
 			<li><strong>信小息</strong> - AI 就业简历分析</li>
 		</ul>
-		<p class="mt-4 text-gray-400">探索 AI 技术在实际场景中的应用，让智能融入校园生活。</p>
+		<p class="mt-4 text-gray-400">探索 AI 技术在实际场景中的应用，让智能融入各行各业与生活。</p>
+		<ModalImage src={imgAgent} title="AI Agent 赋能企业" />
+		<ModalImage src={imgAgent2} title="AI Agent 让知识创造价值" />
 	</div>
 </Modal>

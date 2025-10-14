@@ -1,5 +1,7 @@
 ---
 import Modal from '../Modal.astro';
+import ModalImage from '../ModalImage.astro';
+import imgFrontend from '../../assets/img-frontend.png';
 ---
 
 <Modal id="modal-spring" title="前沿前端工程">
@@ -8,8 +10,9 @@ import Modal from '../Modal.astro';
 		<ul class="list-disc list-inside space-y-2 ml-4">
 			<li><strong>学工部前端</strong> - Vue.js 生态实战</li>
 			<li><strong>心理中心前端</strong> - React 现代化开发</li>
+			<li>接触多种 UI 框架、组件库、基于 Rust 的构建工具的内部实践</li>
 		</ul>
-		<p class="mt-4 text-gray-400">掌握 React / Vue / Astro 现代前端工具链，体验前沿技术栈。</p>
+		<p class="mt-4 text-gray-400">掌握现代前端工具链，体验前沿技术栈。</p>
 		<p class="mt-6 text-gray-500 text-sm flex items-center gap-2">
 			你知道这个招新页面是如何制作的吗？戳 GitHub 仓库 →
 			<a href="https://github.com/Herald2025/welcome-new-tommyer" target="_blank" rel="noopener noreferrer" class="inline-flex items-center hover:text-cyan-300">
@@ -18,5 +21,6 @@ import Modal from '../Modal.astro';
 				</svg>
 			</a>
 		</p>
+		<ModalImage src={imgFrontend} title="前端沙龙分享" />
 	</div>
 </Modal>

@@ -1,8 +1,11 @@
 ---
 import Modal from '../Modal.astro';
+import ModalImage from '../ModalImage.astro';
+import imgCicd from '../../assets/img-cicd.png';
+import imgSsh from '../../assets/img-ssh.png';
 ---
 
-<Modal id="modal-frontend" title="Linux 与自动化运维">
+<Modal id="modal-frontend" title="Linux 与 DevOps">
 	<div class="space-y-4">
 		<p class="text-lg">工作室运维实践：</p>
 		<ul class="list-disc list-inside space-y-2 ml-4">
@@ -10,5 +13,7 @@ import Modal from '../Modal.astro';
 			<li><strong>现代化 CI/CD</strong> - 企业级自动化测试、构建、部署全流程</li>
 		</ul>
 		<p class="mt-4 text-gray-400">接触生产环境服务器，掌握 DevOps 核心技能。</p>
+		<ModalImage src={imgCicd} title="CI/CD DevOps" />
+		<ModalImage src={imgSsh} title="SSH 服务器操作" />
 	</div>
 </Modal>

@@ -1,5 +1,8 @@
 ---
 import Modal from '../Modal.astro';
+
+import ModalImage from '../ModalImage.astro';
+import imgBackend from '../../assets/img-backend.png';
 ---
 
 <Modal id="modal-web" title="企业级后端应用">
@@ -11,5 +14,6 @@ import Modal from '../Modal.astro';
 			<li><strong>导师会客厅后端</strong> - Spring Boot 微服务设计</li>
 		</ul>
 		<p class="mt-4 text-gray-400">深入 Spring Boot 生态与 Node.js 技术栈，构建高可用后端服务。</p>
+		<ModalImage src={imgBackend} title="企业级后端应用架构" />
 	</div>
 </Modal>

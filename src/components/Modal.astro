@@ -9,37 +9,41 @@ const { id, title } = Astro.props;
 ---
 
 <dialog id={id} class="modal-dialog backdrop:bg-black/80 bg-transparent p-0 max-w-4xl w-[90vw] m-auto">
-	<div class="relative bg-black border-2 border-cyan-500 p-6 md:p-10 max-h-[80vh] overflow-y-auto">
-		<!-- Corner decorations -->
-		<div class="absolute top-0 left-0 w-4 h-4 bg-cyan-500"></div>
-		<div class="absolute top-0 right-0 w-4 h-4 bg-cyan-500"></div>
-		<div class="absolute bottom-0 left-0 w-4 h-4 bg-cyan-500"></div>
-		<div class="absolute bottom-0 right-0 w-4 h-4 bg-cyan-500"></div>
+	<!-- 外层：固定的边框和角装饰 -->
+	<div class="relative bg-black border-2 border-cyan-500">
+		<!-- Corner decorations - 固定在外层，不随内容滚动 -->
+		<div class="absolute top-0 left-0 w-4 h-4 bg-cyan-500 z-20"></div>
+		<div class="absolute top-0 right-0 w-4 h-4 bg-cyan-500 z-20"></div>
+		<div class="absolute bottom-0 left-0 w-4 h-4 bg-cyan-500 z-20"></div>
+		<div class="absolute bottom-0 right-0 w-4 h-4 bg-cyan-500 z-20"></div>
 
 		<!-- Close button (右上角X) -->
-		<form method="dialog" class="absolute top-4 right-4 z-10">
+		<form method="dialog" class="absolute top-4 right-4 z-30">
 			<button class="w-10 h-10 flex items-center justify-center text-cyan-400 hover:text-white hover:bg-cyan-500/20 transition-all duration-300 text-3xl leading-none font-bold cursor-pointer">
 				×
 			</button>
 		</form>
 
-		<!-- Title -->
-		<h2 class="text-3xl md:text-4xl font-black text-white mb-6 tracking-tight pr-12">
-			{title}
-		</h2>
+		<!-- 内层：可滚动的内容区域 -->
+		<div class="p-6 md:p-10 max-h-[80vh] overflow-y-auto">
+			<!-- Title -->
+			<h2 class="text-3xl md:text-4xl font-black text-white mb-6 tracking-tight pr-12">
+				{title}
+			</h2>
 
-		<!-- Content slot -->
-		<div class="text-gray-300">
-			<slot />
+			<!-- Content slot -->
+			<div class="text-gray-300">
+				<slot />
+			</div>
+
+			<!-- Close button at bottom (带动画) -->
+			<form method="dialog" class="mt-8">
+				<button class="group relative px-10 py-4 bg-cyan-500 text-black font-bold text-lg uppercase tracking-wide overflow-hidden transition-all duration-300 cursor-pointer">
+					<span class="relative z-10">关闭</span>
+					<div class="absolute inset-0 bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+				</button>
+			</form>
 		</div>
-
-		<!-- Close button at bottom (带动画) -->
-		<form method="dialog" class="mt-8">
-			<button class="group relative px-10 py-4 bg-cyan-500 text-black font-bold text-lg uppercase tracking-wide overflow-hidden transition-all duration-300 cursor-pointer">
-				<span class="relative z-10">关闭</span>
-				<div class="absolute inset-0 bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-			</button>
-		</form>
 	</div>
 </dialog>
 

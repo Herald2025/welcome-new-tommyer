@@ -1,0 +1,14 @@
+---
+// Modal Image Component - 用于模态框中展示带标题的图片
+interface Props {
+	src: ImageMetadata;
+	title: string;
+}
+
+const { src, title } = Astro.props;
+---
+
+<div class="w-full">
+	<img src={src.src} alt={title} class="w-full rounded-none border-2 border-zinc-800" />
+	<p class="text-center text-sm text-gray-500 mt-2">{title}</p>
+</div>
