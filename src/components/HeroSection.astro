@@ -80,6 +80,25 @@
 	if (window.visualViewport) {
 		window.visualViewport.addEventListener('resize', setViewportHeight);
 	}
+
+	// 平滑滚动处理
+	document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(anchor => {
+		anchor.addEventListener('click', function (e: Event) {
+			e.preventDefault();
+			const href = anchor.getAttribute('href');
+			if (href && href !== '#') {
+				const targetId = href.substring(1);
+				const targetElement = document.getElementById(targetId);
+
+				if (targetElement) {
+					targetElement.scrollIntoView({
+						behavior: 'smooth',
+						block: 'start'
+					});
+				}
+			}
+		});
+	});
 </script>
 
 <style>
