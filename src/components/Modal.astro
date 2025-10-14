@@ -47,6 +47,22 @@ const { id, title } = Astro.props;
 	</div>
 </dialog>
 
+<script is:inline>
+document.querySelectorAll('.modal-dialog').forEach((el) => {
+  el.addEventListener('click', (event) => {
+    const rect = el.getBoundingClientRect();
+    if (
+      event.clientX < rect.left ||
+      event.clientX > rect.right ||
+      event.clientY < rect.top ||
+      event.clientY > rect.bottom
+    ) {
+      el.close();
+    }
+  });
+});
+</script>
+
 <style>
 	/* Dialog默认样式重置和居中 */
 	.modal-dialog {
