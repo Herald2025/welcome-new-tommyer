@@ -8,7 +8,7 @@
 
 	<!-- Animated Scan Lines -->
 	<div class="absolute inset-0 overflow-hidden pointer-events-none">
-		<div id="scan-line" class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent animate-scan opacity-50"></div>
+		<div id="scan-line" class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-300 to-transparent animate-scan"></div>
 	</div>
 
 	<!-- Content -->
@@ -20,7 +20,15 @@
 		</div>
 
 		<h1 class="text-6xl md:text-8xl font-black mb-8 animate-fade-in-up tracking-tighter leading-none">
-			<span id="hero-title-primary" class="text-white block font-medium font-serif">信使计划</span>
+			<span
+				id="hero-title-stack"
+				class="hero-title-stack block font-medium text-white is-primary-active"
+				aria-label="信使计划 / 小猴偷米"
+			>
+				<span class="hero-title-placeholder" aria-hidden="true">信使计划</span>
+				<span class="hero-title-layer title-primary" aria-hidden="true">信使计划</span>
+				<span class="hero-title-layer title-alt" aria-hidden="true">小猴偷米</span>
+			</span>
 			<span class="text-white block text-4xl md:text-5xl tracking-wide mt-2 font-extralight font-serif">工作室</span>
 			<span class="text-cyan-400 block mt-4 font-extralight tracking-wide font-serif">Herald Studio</span>
 		</h1>
@@ -102,39 +110,40 @@
 
 	(function () {
 		const scanEl = document.querySelector('#scan-line');
-		const titleEl = document.querySelector('#hero-title-primary');
-		if (!scanEl || !titleEl) return;
+		const titleStack = document.querySelector('#hero-title-stack');
+		if (!scanEl || !titleStack) return;
 
-		const originalText = '信使计划';
-		const altText = '小猴偷米';
-		let lastOverlap = false;
-		let swapping = false;
+		let lastTop: number | null = null;
+		let mode: 'primary' | 'alt' = (titleStack as HTMLElement).classList.contains('is-alt-active') ? 'alt' : 'primary';
 
-		function smoothSwap(el: Element, next: string) {
-			if (swapping) return;
-			swapping = true;
-			(el as HTMLElement).style.opacity = '0';
-			setTimeout(() => {
-				(el as HTMLElement).textContent = next;
-				(el as HTMLElement).style.opacity = '1';
-				setTimeout(() => {
-					swapping = false;
-				}, 300);
-			}, 180);
+		function applyMode(nextMode: 'primary' | 'alt') {
+			if (mode === nextMode) return;
+			mode = nextMode;
+			(titleStack as HTMLElement).classList.toggle('is-primary-active', mode === 'primary');
+			(titleStack as HTMLElement).classList.toggle('is-alt-active', mode === 'alt');
+		}
+
+		function toggleMode() {
+			applyMode(mode === 'primary' ? 'alt' : 'primary');
 		}
 
 		function tick() {
-			const lineRect = (scanEl as HTMLElement).getBoundingClientRect();
-			const titleRect = (titleEl as HTMLElement).getBoundingClientRect();
-			const lineY = lineRect.top;
-			const overlapping = lineY >= titleRect.top && lineY <= titleRect.bottom;
+			const scanRect = (scanEl as HTMLElement).getBoundingClientRect();
+			const titleRect = (titleStack as HTMLElement).getBoundingClientRect();
+			const titleHeight = titleRect.height || 1;
 
-			if (overlapping && !lastOverlap) {
-				const next = (titleEl as HTMLElement).textContent === originalText ? altText : originalText;
-				smoothSwap(titleEl as HTMLElement, next);
+			if (lastTop !== null && scanRect.top + 5 < lastTop) {
+				toggleMode();
 			}
+			lastTop = scanRect.top;
 
-			lastOverlap = overlapping;
+			const lineCenter = scanRect.top + scanRect.height / 2;
+			const clampedCenter = Math.min(Math.max(lineCenter, titleRect.top), titleRect.bottom);
+			const progress = (clampedCenter - titleRect.top) / titleHeight;
+			const clamped = Math.min(1, Math.max(0, progress));
+
+			(titleStack as HTMLElement).style.setProperty('--scan-progress', clamped.toFixed(4));
+
 			requestAnimationFrame(tick);
 		}
 
@@ -158,6 +167,12 @@
 
 	.animate-scan {
 		animation: scan 3s linear infinite;
+	}
+
+	#scan-line {
+		opacity: 0.85;
+		box-shadow: 0 0 12px rgba(34, 211, 238, 0.8), 0 0 24px rgba(34, 211, 238, 0.45);
+		filter: drop-shadow(0 0 6px rgba(45, 212, 191, 0.5));
 	}
 
 	@keyframes fade-in {
@@ -285,7 +300,55 @@
 			opacity: 0;
 		}
 	}
-	#hero-title-primary {
-		transition: opacity 180ms ease;
+
+	.hero-title-stack {
+		position: relative;
+		display: block;
+		--scan-progress: 0;
+	}
+
+	.hero-title-placeholder {
+		visibility: hidden;
+		display: block;
+	}
+
+	.hero-title-layer {
+		position: absolute;
+		inset: 0;
+		display: block;
+		will-change: clip-path;
+		transition: none;
+	}
+
+	.hero-title-layer.title-primary {
+		color: #ffffff;
+		font-family: var(--font-serif, 'Noto Serif SC', 'Songti SC', serif);
+	}
+
+	.hero-title-layer.title-alt {
+    color: #ffffff;
+		font-family: var(--font-serif, 'Noto Serif SC', 'Songti SC', serif);
+		/* color: #22d3ee; */
+		/* font-family: var(--font-sans, 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif); */
+	}
+
+	.hero-title-stack.is-primary-active .title-primary {
+		z-index: 1;
+		clip-path: inset(calc(var(--scan-progress, 0) * 100%) 0 0 0);
+	}
+
+	.hero-title-stack.is-primary-active .title-alt {
+		z-index: 2;
+		clip-path: inset(0 0 calc((1 - var(--scan-progress, 0)) * 100%) 0);
+	}
+
+	.hero-title-stack.is-alt-active .title-alt {
+		z-index: 1;
+		clip-path: inset(calc(var(--scan-progress, 0) * 100%) 0 0 0);
+	}
+
+	.hero-title-stack.is-alt-active .title-primary {
+		z-index: 2;
+		clip-path: inset(0 0 calc((1 - var(--scan-progress, 0)) * 100%) 0);
 	}
 </style>
