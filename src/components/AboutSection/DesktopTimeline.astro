@@ -1,0 +1,125 @@
+---
+// Desktop Timeline Component - Horizontal Timeline
+---
+
+<!-- Desktop: Horizontal Timeline (≥ md) -->
+<div id="timeline-desktop" class="hidden md:block relative">
+	<!-- Horizontal line -->
+	<div class="absolute left-0 right-0 top-0 h-0.5 bg-cyan-500"></div>
+
+	<!-- Timeline items -->
+	<div class="grid grid-cols-6 gap-4">
+		<!-- 2001 -->
+		<div class="relative pt-8 timeline-item">
+			<div class="absolute left-1/2 top-0 w-3 h-3 bg-cyan-500 rounded-full -translate-x-1/2 -translate-y-[5px]"></div>
+			<div class="bg-black border-2 border-zinc-800 p-4 h-full">
+				<div class="text-cyan-400 font-mono text-sm mb-2">2001</div>
+				<p class="text-gray-300 text-sm leading-relaxed">东南大学先声网是最早的前身，早期团队参加了学校思政网站的建设工作</p>
+			</div>
+		</div>
+
+		<!-- 2014 -->
+		<div class="relative pt-8 timeline-item">
+			<div class="absolute left-1/2 top-0 w-3 h-3 bg-cyan-500 rounded-full -translate-x-1/2 -translate-y-[5px]"></div>
+			<div class="bg-black border-2 border-zinc-800 p-4 h-full">
+				<div class="text-cyan-400 font-mono text-sm mb-2">2014</div>
+				<p class="text-gray-300 text-sm leading-relaxed">小猴偷米诞生，上线微信公众号服务</p>
+			</div>
+		</div>
+
+		<!-- 2016 -->
+		<div class="relative pt-8 timeline-item">
+			<div class="absolute left-1/2 top-0 w-3 h-3 bg-cyan-500 rounded-full -translate-x-1/2 -translate-y-[5px]"></div>
+			<div class="bg-black border-2 border-zinc-800 p-4 h-full">
+				<div class="text-cyan-400 font-mono text-sm mb-2">2016</div>
+				<p class="text-gray-300 text-sm leading-relaxed">推出小猴偷米系列产品<br />安卓应用、iOS应用、微信小程序、微信公众号以及PWA</p>
+			</div>
+		</div>
+
+		<!-- 2020 -->
+		<div class="relative pt-8 timeline-item">
+			<div class="absolute left-1/2 top-0 w-3 h-3 bg-cyan-500 rounded-full -translate-x-1/2 -translate-y-[5px]"></div>
+			<div class="bg-black border-2 border-zinc-800 p-4 h-full">
+				<div class="text-cyan-400 font-mono text-sm mb-2">2020</div>
+				<p class="text-gray-300 text-sm leading-relaxed">东南学工系统上线</p>
+			</div>
+		</div>
+
+		<!-- 2024 -->
+		<div class="relative pt-8 timeline-item">
+			<div class="absolute left-1/2 top-0 w-3 h-3 bg-cyan-500 rounded-full -translate-x-1/2 -translate-y-[5px]"></div>
+			<div class="bg-black border-2 border-zinc-800 p-4 h-full">
+				<div class="text-cyan-400 font-mono text-sm mb-2">2024</div>
+				<p class="text-gray-300 text-sm leading-relaxed">信息学院导师会客厅系统运维</p>
+			</div>
+		</div>
+
+		<!-- 2025+ -->
+		<div class="relative pt-8 timeline-item">
+			<div class="absolute left-1/2 top-0 w-3 h-3 bg-cyan-500 rounded-full -translate-x-1/2 -translate-y-[5px]"></div>
+			<div class="bg-black border-2 border-cyan-500 p-4 h-full">
+				<div class="text-cyan-400 font-mono text-sm mb-2">2025</div>
+				<p class="text-gray-300 text-sm leading-relaxed">畅行线AI Agent平台搭建，机关党委网站版面改造，信小息AI就业小程序开发，辅楼预约系统运维...</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	// 桌面端时间轴进入视口动画
+	const timelineDesktop = document.getElementById('timeline-desktop');
+
+	if (timelineDesktop) {
+		const items = timelineDesktop.querySelectorAll('.timeline-item');
+
+		// JavaScript 加载后，先隐藏所有项目
+		items.forEach(item => {
+			item.classList.add('timeline-hidden');
+		});
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					// 进入视口时，依次添加动画
+					items.forEach((item, index) => {
+						setTimeout(() => {
+							item.classList.remove('timeline-hidden');
+							item.classList.add('timeline-visible');
+						}, index * 150); // 每个项目延迟150ms
+					});
+				} else {
+					// 离开视口时，移除动画类，重置状态
+					items.forEach(item => {
+						item.classList.remove('timeline-visible');
+						item.classList.add('timeline-hidden');
+					});
+				}
+			});
+		}, {
+			threshold: 0.2 // 当20%可见时触发
+		});
+
+		observer.observe(timelineDesktop);
+	}
+</script>
+
+<style>
+	/* 桌面端时间轴项目默认可见（无JS时） */
+	.timeline-item {
+		opacity: 1;
+		transform: translateX(0);
+		transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+	}
+
+	/* JS加载后的隐藏状态 */
+	.timeline-item.timeline-hidden {
+		opacity: 0;
+		transform: translateX(-30px);
+	}
+
+	/* 动画显示状态 */
+	.timeline-item.timeline-visible {
+		opacity: 1;
+		transform: translateX(0);
+	}
+</style>
