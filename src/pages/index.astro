@@ -15,6 +15,13 @@ import JoinSection from '../components/JoinSection.astro';
 	</div>
 </Layout>
 
+<script>
+	if (window.location.hostname === '2025.myseu.cn') {
+		const newUrl = window.location.href.replace('2025.myseu.cn', 'myseu.cn');
+		window.location.replace(newUrl);
+	}
+</script>
+
 <style is:global>
 	html {
 		scroll-behavior: smooth;
