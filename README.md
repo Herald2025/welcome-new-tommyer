@@ -1,3 +1,3 @@
-# SEU Herald Studio 2025秋季招新主页
+# SEU Herald Studio
 
 Powered by Astro
